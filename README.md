@@ -1,23 +1,26 @@
-# jdownloader-themes
+# PixelFizz
 
-Colección de temas [FlatLaf](https://www.formdev.com/flatlaf/) para **JDownloader 2**.
+> 🍒 Tema 8-bit con colores ácidos para JDownloader 2. Refresco de arcade, directo de los 80s.
 
-Cada tema vive en su propia rama. Los temas estables incluyen el jar ya compilado
-en la rama y builds automáticos por CI. Los temas en desarrollo tienen su rama de
-pre-releases (`<tema>-alpha`, `-beta`, ...) donde ocurre la magia antes de llegar a estable.
+**Estado: en desarrollo** — el trabajo activo pasa por la rama [`PixelFizz-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz-alpha).
 
-## Temas
+## Concepto
 
-| Tema | Estado | Preview | Rama | Descarga |
-|------|--------|---------|------|----------|
-| **Pastel98** | Estable | ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png) | [`Pastel98`](https://github.com/deviceargent/jdownloader-themes/tree/Pastel98) | [FlatPastel98.jar](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/FlatPastel98.jar) |
-| **PixelFizz** | En desarrollo (8-bit / colores ácidos / 80s) | próximamente | [`PixelFizz`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz) · [`PixelFizz-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz-alpha) | — |
+Fondo noche profundo casi negro-violeta, y encima todo lo que brilla:
+verde ácido, fucsia eléctrico, cian neón y amarillo chicle. La idea es una
+máquina arcade a oscuras — superficies oscuras que no compiten, y cada
+elemento interactivo encendido como un LED de marquee.
 
-## Instalación rápida
+- **Base**: `#12081f` (noche violeta)
+- **Ácidos**: `#aaff00` lima · `#ff2079` fucsia · `#00f0ff` cian · `#ffe600` amarillo
+- Texto claro neutro, sin pastel: contraste duro, cero nostalgia suave
 
-1. Bajá el jar del tema y copialo a `<carpeta de JDownloader 2>\libs\laf\`
-2. Copiá el `.json` del tema (si viene) a `cfg\laf\`
-3. Reiniciá JDownloader y elegí el tema en *Configuración → Interfaz*,
-   o apuntá `customlookandfeelclass` a la clase indicada en el README de cada tema
+## Roadmap
 
-Cada rama tiene su propio README con instrucciones completas, paleta y detalles.
+- [ ] Paleta base sobre FlatDarkLaf
+- [ ] Colores JD2 (tablas, tooltips, speed meter)
+- [ ] Detalles 8-bit: ¿bordes pixel? ¿dither ácido?
+- [ ] Preview real
+
+Mientras tanto, mirá [`Pastel98`](https://github.com/deviceargent/jdownloader-themes/tree/Pastel98),
+el hermano tranquilo de esta casa.
