@@ -21,6 +21,21 @@ pre-releases (`<tema>-alpha`, `-beta`, ...) donde ocurre la magia antes de llega
 
 ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98-2.png)
 
+## Checklist para temas nuevos
+
+Al arrancar un tema, decidir **si requiere parche de `JDownloader.jar`**:
+
+- JDownloader hardcodea el color del texto en la columna de progreso por luminancia
+  del fondo (`ExtProgressColumn.getDefaultForeground()`): **fondo oscuro → texto
+  blanco ilegible; fondo claro → texto negro legible**
+- Tema **oscuro** → necesita parche del jar (ver `Install-Phosphor.ps1` en
+  [Phosphor](https://github.com/deviceargent/Phosphor)) o aceptar el blanco
+- Tema **claro** → sin parche, funciona de fábrica
+
+> ⚠️ La máquina de desarrollo tiene el jar **siempre parcheado**: lo que vemos acá
+> no es exactamente lo que ve un usuario limpio. Antes de publicar un tema,
+> validar contra un jar sin parchear.
+
 ## Instalación rápida
 
 1. Bajá el jar del tema y copialo a `<carpeta de JDownloader 2>\libs\laf\`
