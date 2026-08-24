@@ -1,0 +1,4 @@
+bin/
+*.class
+flatlaf.jar
+*.license
