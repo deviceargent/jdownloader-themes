@@ -6,6 +6,8 @@ en los fondos, como en los juegos de la época.
 
 ![Pastel98](screenshots/Pastel98.png)
 
+![Pastel98](screenshots/Pastel98-2.png)
+
 ## Características
 
 - Paleta crema/rosa inspirada en las paletas de 16 colores del NEC PC-98
@@ -16,6 +18,19 @@ en los fondos, como en los juegos de la época.
   blanco cálido sobre relleno rosa)
 - Colores JD2 afinados: filas de paquete, tooltips, hover, speed meter y bordes
 - Sin iconos custom (usa el set estándar)
+
+## Compatibilidad
+
+**No requiere parche en `JDownloader.jar`.**
+
+Contexto: JDownloader tiene un hardcode en `ExtProgressColumn` que elige el color
+del texto de las barras por luminosidad del fondo — blanco sobre fondos oscuros,
+negro sobre claros. Los temas oscuros (como [Phosphor](https://github.com/deviceargent/Phosphor))
+necesitan parchar el jar para evitar texto blanco ilegible. Pastel98, al ser claro,
+recibe **negro**: legible de fábrica, sin tocar nada.
+
+Si además aplicás el parche (o ya lo tenés), el texto de la columna de progreso
+usa el ciruela del tema en vez de negro puro — apenas más prolijo, pero opcional.
 
 ## Instalación
 
