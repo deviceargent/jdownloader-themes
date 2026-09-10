@@ -60,6 +60,20 @@ usa el ciruela del tema en vez de negro puro — apenas más prolijo, pero opcio
 | Acento (focus, links, progreso) | `#d98aa8` / `#e88ab0` |
 | Bordes | `#ddd1bc` |
 
+## Hover de Settings (opcional)
+
+El hover del mouse sobre los iconos de la sidebar de Ajustes lo pinta el código de
+JD2 (`ConfigSidebar`) con un tono genérico. Para que use el dusty del tema hace falta
+un parche en `libs\JDGUI.jar` (no en `JDownloader.jar`; no afecta la legibilidad):
+
+```powershell
+Set-ExecutionPolicy -Scope Process Bypass
+.\patch\Install-Pastel98-Hover.ps1
+```
+
+El color se lee de `ConfigSidebar.hoverBackground` (definida en el tema, `#c4a0a0`).
+El script hace backup automático y es idempotente.
+
 ## Compilar desde fuente
 
 ```bash
