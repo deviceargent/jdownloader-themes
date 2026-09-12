@@ -12,6 +12,7 @@ pre-releases (`<tema>-alpha`, `-beta`, ...) donde ocurre la magia antes de llega
 |------|--------|---------|------|----------|
 | **Pastel98** | Estable | ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png) | [`Pastel98`](https://github.com/deviceargent/jdownloader-themes/tree/Pastel98) | [FlatPastel98.jar](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/FlatPastel98.jar) |
 | **PixelFizz** | En desarrollo (8-bit / colores ácidos / 80s) | próximamente | [`PixelFizz`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz) · [`PixelFizz-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz-alpha) | — |
+| **VaporGrid** | En desarrollo (retrowave / synthwave) | próximamente | [`VaporGrid-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/VaporGrid-alpha) | [FlatVaporGrid.jar](https://github.com/deviceargent/jdownloader-themes/raw/VaporGrid-alpha/FlatVaporGrid.jar) |
 
 ## Previews
 
@@ -33,8 +34,8 @@ Al arrancar un tema, decidir **si requiere parche de `JDownloader.jar`**:
 - Tema **claro** → sin parche, funciona de fábrica
 
 > ⚠️ La máquina de desarrollo tiene el jar **siempre parcheado**: lo que vemos acá
-> no es exactamente lo que ve un usuario limpio. Antes de publicar un tema,
-> validar contra un jar sin parchear.
+  no es exactamente lo que ve un usuario limpio. Antes de publicar un tema,
+  validar contra un jar sin parchear.
 
 ## Instalación rápida
 
