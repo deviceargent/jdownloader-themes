@@ -1,46 +1,51 @@
-# jdownloader-themes
+# VaporGrid · alpha
 
-Colección de temas [FlatLaf](https://www.formdev.com/flatlaf/) para **JDownloader 2**.
+Rama de desarrollo activo del tema **VaporGrid** (retrowave / synthwave).
 
-Cada tema vive en su propia rama. Los temas estables incluyen el jar ya compilado
-en la rama y builds automáticos por CI. Los temas en desarrollo tienen su rama de
-pre-releases (`<tema>-alpha`, `-beta`, ...) donde ocurre la magia antes de llegar a estable.
+> Nada de esta rama está garantizada. Todavía está tomando forma. 🌆
 
-## Temas
+## Concepto
 
-| Tema | Estado | Preview | Rama | Descarga |
-|------|--------|---------|------|----------|
-| **Pastel98** | Estable | ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png) | [`Pastel98`](https://github.com/deviceargent/jdownloader-themes/tree/Pastel98) | [FlatPastel98.jar](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/FlatPastel98.jar) |
-| **PixelFizz** | En desarrollo (8-bit / colores ácidos / 80s) | próximamente | [`PixelFizz`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz) · [`PixelFizz-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz-alpha) | — |
+Noche violeta con neón: la estética de las grillas de sol sintético de los 80s.
+Fondo violeta profundo, cian eléctrico como color de texto/detalle, fucsia rosa
+como acento caliente. Y la firma del tema: una **grilla diagonal fucsia** pintada
+proceduralmente (TexturePaint, sin assets) sobre paneles y desktop, como el
+"camino" retrowave clásico.
 
-## Previews
+## Paleta actual
 
-### Pastel98
+| Uso | Color |
+|-----|-------|
+| Fondo base | `#150830` |
+| Superficie clara | `#190b38` |
+| Texto principal | `#e8ddff` |
+| Cian neón (texto/detalle) | `#00fff9` |
+| Fucsia rosa (acento, tab, grilla) | `#ff3c98` |
+| Oro sunset (warnings) | `#f9c80e` |
 
-![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png)
+La grilla diagonal: `#ff3c98` al ~16% de alpha, tile de 48px, líneas cada 12px.
 
-![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98-2.png)
+## Compatibilidad
 
-## Checklist para temas nuevos
+**Requiere el mismo parche que los temas oscuros (ver Phosphor).**
 
-Al arrancar un tema, decidir **si requiere parche de `JDownloader.jar`**:
+JDownloader tiene un hardcode en `org.appwork.swing.exttable.columns.ExtProgressColumn`
+(`getDefaultForeground()`) que pinta **blanco fijo** el texto de las barras de progreso
+de las **filas hijas** cuando el fondo es oscuro. Ninguna key del tema lo puede cambiar;
+hay que parchear `JDownloader.jar` para que devuelva `null` y herede el color del tema.
 
-- JDownloader hardcodea el color del texto en la columna de progreso por luminancia
-  del fondo (`ExtProgressColumn.getDefaultForeground()`): **fondo oscuro → texto
-  blanco ilegible; fondo claro → texto negro legible**
-- Tema **oscuro** → necesita parche del jar (ver `Install-Phosphor.ps1` en
-  [Phosphor](https://github.com/deviceargent/Phosphor)) o aceptar el blanco
-- Tema **claro** → sin parche, funciona de fábrica
+Referencia: `github.com/deviceargent/Phosphor` → `Install-Phosphor.ps1` (idempotente).
 
-> ⚠️ La máquina de desarrollo tiene el jar **siempre parcheado**: lo que vemos acá
-> no es exactamente lo que ve un usuario limpio. Antes de publicar un tema,
-> validar contra un jar sin parchear.
+## Instalación
 
-## Instalación rápida
+1. `FlatVaporGrid.jar` → `libs\laf\`
+2. `cfg/VaporGrid.json` → `cfg\laf\`
+3. `customlookandfeelclass` → `com.github.deviceargent.vaporgrid.VaporGrid`
 
-1. Bajá el jar del tema y copialo a `<carpeta de JDownloader 2>\libs\laf\`
-2. Copiá el `.json` del tema (si viene) a `cfg\laf\`
-3. Reiniciá JDownloader y elegí el tema en *Configuración → Interfaz*,
-   o apuntá `customlookandfeelclass` a la clase indicada en el README de cada tema
+## Compilar desde fuente
 
-Cada rama tiene su propio README con instrucciones completas, paleta y detalles.
+```bash
+javac -cp flatlaf.jar -d bin src/com/github/deviceargent/vaporgrid/*.java
+cp src/com/github/deviceargent/vaporgrid/*.properties bin/com/github/deviceargent/vaporgrid/
+jar cf FlatVaporGrid.jar -C bin .
+```
