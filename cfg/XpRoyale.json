@@ -1,0 +1,19 @@
+{
+    "textantialiasenabled": true,
+    "customlookandfeelclass": "com.github.deviceargent.xproyale.XpRoyale",
+    "windowdecorationenabled": true,
+    "colorforpanelbackground": "#ffeef5fc",
+    "colorforpanelheaderbackground": "#ffe2edf8",
+    "colorforpanelheaderforeground": "#ff173b63",
+    "colorforpanelborders": "#ff9bb9d4",
+    "colorfortableselectedrowsbackground": "#ff77b7f0",
+    "colorfortableselectedrowsforeground": "#ff173b63",
+    "colorforprogressbarforeground1": "#ff2c78c7",
+    "colorforprogressbarforeground2": "#ff4faf58",
+    "colorforprogressbarforeground3": "#ff77b7f0",
+    "colorforprogressbarforeground4": "#ff185a9d",
+    "colorforscrollbarsnormalstate": "#ff9dbbd5",
+    "colorforscrollbarsmouseoverstate": "#ff2c78c7",
+    "speedmeterantialiasingenabled": true,
+    "iconsetid": "standard"
+}
