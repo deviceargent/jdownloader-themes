@@ -1,47 +1,40 @@
-# jdownloader-themes
+# SunsetTape · alpha
 
-Colección de temas [FlatLaf](https://www.formdev.com/flatlaf/) para **JDownloader 2**.
+Rama de desarrollo activo del tema **SunsetTape** para JDownloader 2.
 
-Cada tema vive en su propia rama. Los temas estables incluyen el jar ya compilado
-en la rama y builds automáticos por CI. Los temas en desarrollo tienen su rama de
-pre-releases (`<tema>-alpha`, `-beta`, ...) donde ocurre la magia antes de llegar a estable.
+## Concepto
 
-## Temas
+Una etiqueta VHS de atardecer: papel crema, tinta azul manuscrita y bandas de
+cinta en morado, magenta, naranja y amarillo alrededor de la titlebar.
 
-| Tema | Estado | Preview | Rama | Descarga |
-|------|--------|---------|------|----------|
-| **Pastel98** | Estable | ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png) | [`Pastel98`](https://github.com/deviceargent/jdownloader-themes/tree/Pastel98) | [FlatPastel98.jar](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/FlatPastel98.jar) |
-| **PixelFizz** | En desarrollo (8-bit / colores ácidos / 80s) | próximamente | [`PixelFizz`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz) · [`PixelFizz-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz-alpha) | — |
-| **VaporGrid** | En desarrollo (retrowave / synthwave) | próximamente | [`VaporGrid-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/VaporGrid-alpha) | [FlatVaporGrid.jar](https://github.com/deviceargent/jdownloader-themes/raw/VaporGrid-alpha/FlatVaporGrid.jar) |
+## Paleta
 
-## Previews
+| Uso | Color |
+|-----|-------|
+| Fondo crema | `#F3EFE3` |
+| Morado | `#4E286C` |
+| Magenta / rosa oscuro | `#C92F61` |
+| Naranja | `#E56934` |
+| Amarillo | `#F4B32A` |
+| Tinta azul del título | `#1D4E89` |
 
-### Pastel98
+## Compatibilidad
 
-![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png)
+Es un tema claro basado en `FlatLightLaf`; no requiere parche de
+`JDownloader.jar`.
 
-![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98-2.png)
+## Instalación
 
-## Checklist para temas nuevos
+1. Copiar `FlatSunsetTape.jar` a `libs\laf\`.
+2. Copiar `cfg/SunsetTape.json` a `cfg\laf\`.
+3. Configurar `customlookandfeelclass` como
+   `com.github.deviceargent.sunsettape.SunsetTape`.
+4. Reiniciar JDownloader 2.
 
-Al arrancar un tema, decidir **si requiere parche de `JDownloader.jar`**:
+## Compilar desde fuente
 
-- JDownloader hardcodea el color del texto en la columna de progreso por luminancia
-  del fondo (`ExtProgressColumn.getDefaultForeground()`): **fondo oscuro → texto
-  blanco ilegible; fondo claro → texto negro legible**
-- Tema **oscuro** → necesita parche del jar (ver `Install-Phosphor.ps1` en
-  [Phosphor](https://github.com/deviceargent/Phosphor)) o aceptar el blanco
-- Tema **claro** → sin parche, funciona de fábrica
-
-> ⚠️ La máquina de desarrollo tiene el jar **siempre parcheado**: lo que vemos acá
-  no es exactamente lo que ve un usuario limpio. Antes de publicar un tema,
-  validar contra un jar sin parchear.
-
-## Instalación rápida
-
-1. Bajá el jar del tema y copialo a `<carpeta de JDownloader 2>\libs\laf\`
-2. Copiá el `.json` del tema (si viene) a `cfg\laf\`
-3. Reiniciá JDownloader y elegí el tema en *Configuración → Interfaz*,
-   o apuntá `customlookandfeelclass` a la clase indicada en el README de cada tema
-
-Cada rama tiene su propio README con instrucciones completas, paleta y detalles.
+```bash
+javac -cp flatlaf.jar -d bin src/com/github/deviceargent/sunsettape/*.java
+cp src/com/github/deviceargent/sunsettape/SunsetTape.properties bin/com/github/deviceargent/sunsettape/
+jar cf FlatSunsetTape.jar -C bin .
+```
