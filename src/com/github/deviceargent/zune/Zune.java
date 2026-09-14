@@ -21,6 +21,7 @@ public class Zune
 		UIDefaults defaults = super.getDefaults();
 		defaults.put( "PanelUI", ZunePanelUI.class.getName() );
 		defaults.put( "ViewportUI", ZuneViewportUI.class.getName() );
+		defaults.put( "RootPaneUI", ZuneRootPaneUI.class.getName() );
 		return defaults;
 	}
 
