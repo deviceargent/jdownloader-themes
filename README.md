@@ -2,9 +2,8 @@
 
 Colección de temas [FlatLaf](https://www.formdev.com/flatlaf/) para **JDownloader 2**.
 
-Cada tema vive en su propia rama. Los temas estables incluyen el jar ya compilado
-en la rama y builds automáticos por CI. Los temas en desarrollo tienen su rama de
-pre-releases (`<tema>-alpha`, `-beta`, ...) donde ocurre la magia antes de llegar a estable.
+Cada tema vive en su propia rama. Las ramas sin sufijo son las entregas estables;
+las ramas `-alpha` y `-beta` conservan iteraciones históricas o experimentales.
 
 ## Temas
 
@@ -12,8 +11,15 @@ pre-releases (`<tema>-alpha`, `-beta`, ...) donde ocurre la magia antes de llega
 |------|--------|---------|------|----------|
 | **Pastel98** | Estable | ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png) | [`Pastel98`](https://github.com/deviceargent/jdownloader-themes/tree/Pastel98) | [FlatPastel98.jar](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/FlatPastel98.jar) |
 | **Zune** | Estable | próximamente | [`Zune`](https://github.com/deviceargent/jdownloader-themes/tree/Zune) | [FlatZune.jar](https://github.com/deviceargent/jdownloader-themes/raw/Zune/FlatZune.jar) |
-| **PixelFizz** | En desarrollo (8-bit / colores ácidos / 80s) | próximamente | [`PixelFizz`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz) · [`PixelFizz-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz-alpha) | — |
-| **VaporGrid** | En desarrollo (retrowave / synthwave) | próximamente | [`VaporGrid-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/VaporGrid-alpha) | [FlatVaporGrid.jar](https://github.com/deviceargent/jdownloader-themes/raw/VaporGrid-alpha/FlatVaporGrid.jar) |
+| **SunsetTape** | Estable | próximamente | [`SunsetTape`](https://github.com/deviceargent/jdownloader-themes/tree/SunsetTape) | [FlatSunsetTape.jar](https://github.com/deviceargent/jdownloader-themes/raw/SunsetTape/FlatSunsetTape.jar) |
+| **PixelFizz** | Estable | próximamente | [`PixelFizz`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz) | [FlatPixelFizz.jar](https://github.com/deviceargent/jdownloader-themes/raw/PixelFizz/FlatPixelFizz.jar) |
+| **VaporGrid** | Estable | próximamente | [`VaporGrid`](https://github.com/deviceargent/jdownloader-themes/tree/VaporGrid) | [FlatVaporGrid.jar](https://github.com/deviceargent/jdownloader-themes/raw/VaporGrid/FlatVaporGrid.jar) |
+
+## Archivado
+
+| Tema | Estado | Rama |
+|------|--------|------|
+| **XP Royale** | Archivado; no recomendado | [`XpRoyale-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/XpRoyale-alpha) |
 
 ## Previews
 
@@ -22,6 +28,10 @@ pre-releases (`<tema>-alpha`, `-beta`, ...) donde ocurre la magia antes de llega
 ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png)
 
 ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98-2.png)
+
+> GitHub no ofrece pestañas Markdown reales para contenido arbitrario. Para una
+> portada compacta conviene usar esta tabla como selector y `<details>` para
+> instrucciones largas; los navegadores no recargan la página al abrirlos.
 
 ## Checklist para temas nuevos
 
