@@ -3,6 +3,7 @@ package com.github.deviceargent.zune;
 import com.formdev.flatlaf.ui.FlatRootPaneUI;
 import javax.swing.JComponent;
 import javax.swing.JRootPane;
+import javax.swing.SwingUtilities;
 import javax.swing.plaf.ComponentUI;
 
 public class ZuneRootPaneUI
@@ -22,6 +23,13 @@ public class ZuneRootPaneUI
 			glassPane = new ZuneGlassPane( rootPane );
 			rootPane.setGlassPane( glassPane );
 			glassPane.setVisible( true );
+			SwingUtilities.invokeLater( () -> {
+				if( rootPane.getGlassPane() != glassPane )
+					rootPane.setGlassPane( glassPane );
+				glassPane.setVisible( true );
+				glassPane.revalidate();
+				glassPane.repaint();
+			} );
 		}
 	}
 
