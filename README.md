@@ -1,6 +1,6 @@
-# SunsetTape · alpha
+# SunsetTape
 
-Rama de desarrollo activo del tema **SunsetTape** para JDownloader 2.
+Tema final **SunsetTape** para JDownloader 2.
 
 ## Concepto
 
