@@ -11,6 +11,7 @@ pre-releases (`<tema>-alpha`, `-beta`, ...) donde ocurre la magia antes de llega
 | Tema | Estado | Preview | Rama | Descarga |
 |------|--------|---------|------|----------|
 | **Pastel98** | Estable | ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png) | [`Pastel98`](https://github.com/deviceargent/jdownloader-themes/tree/Pastel98) | [FlatPastel98.jar](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/FlatPastel98.jar) |
+| **Zune** | Estable | próximamente | [`Zune`](https://github.com/deviceargent/jdownloader-themes/tree/Zune) | [FlatZune.jar](https://github.com/deviceargent/jdownloader-themes/raw/Zune/FlatZune.jar) |
 | **PixelFizz** | En desarrollo (8-bit / colores ácidos / 80s) | próximamente | [`PixelFizz`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz) · [`PixelFizz-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz-alpha) | — |
 | **VaporGrid** | En desarrollo (retrowave / synthwave) | próximamente | [`VaporGrid-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/VaporGrid-alpha) | [FlatVaporGrid.jar](https://github.com/deviceargent/jdownloader-themes/raw/VaporGrid-alpha/FlatVaporGrid.jar) |
 
