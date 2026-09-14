@@ -65,8 +65,10 @@ public class Zune
 	}
 
 	private static void clearContainerOpacity( JComponent component ) {
-		if( component instanceof JPanel || component instanceof JScrollPane || component instanceof JViewport || component instanceof JLayer )
+		if( component instanceof JPanel || component instanceof JScrollPane || component instanceof JLayer )
 			component.setOpaque( false );
+		if( component instanceof JViewport )
+			component.setOpaque( true );
 		if( component instanceof Container ) {
 			((Container) component).addContainerListener( new ContainerAdapter() {
 				@Override
