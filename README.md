@@ -8,8 +8,8 @@ Interfaz oscura de reproductor: grafito casi negro, superficies carbón,
 texto blanco cálido y naranja fuerte como único acento. La intención es que el
 contenido y los controles parezcan una interfaz de dispositivo, no una ventana
 de escritorio genérica.
-La primera iteración incluye titlebar naranja con brillo blanco y un reflejo
-vertical muy leve en los paneles.
+La primera iteración incluye un cuerpo negro tipo Vista Black con reflejo
+vertical y una titlebar Aero azul grisácea con brillo blanco.
 
 ## Paleta inicial
 
