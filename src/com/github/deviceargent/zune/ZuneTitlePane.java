@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JRootPane;
+import javax.swing.plaf.basic.BasicButtonUI;
 
 public class ZuneTitlePane
 	extends FlatTitlePane
@@ -28,7 +29,10 @@ public class ZuneTitlePane
 
 	private void styleButton( JButton button ) {
 		if( button != null ) {
+			button.setUI( new BasicButtonUI() );
 			button.setOpaque( false );
+			button.setBorderPainted( false );
+			button.setFocusPainted( false );
 			button.setBackground( new Color( 0, 0, 0, 0 ) );
 			button.putClientProperty( "FlatLaf.style", "arc: 0; background: #00000000; hoverBackground: #00000000; pressedBackground: #00000000; borderWidth: 0" );
 		}
