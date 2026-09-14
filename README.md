@@ -1,8 +1,6 @@
-# VaporGrid · alpha
+# VaporGrid
 
-Rama de desarrollo activo del tema **VaporGrid** (retrowave / synthwave).
-
-> Nada de esta rama está garantizada. Todavía está tomando forma. 🌆
+Tema final **VaporGrid** (retrowave / synthwave).
 
 ## Concepto
 
