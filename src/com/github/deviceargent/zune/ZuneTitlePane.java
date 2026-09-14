@@ -27,8 +27,11 @@ public class ZuneTitlePane
 	}
 
 	private void styleButton( JButton button ) {
-		if( button != null )
-			button.putClientProperty( "FlatLaf.style", "arc: 0; background: null; hoverBackground: null; pressedBackground: null; borderWidth: 0" );
+		if( button != null ) {
+			button.setOpaque( false );
+			button.setBackground( new Color( 0, 0, 0, 0 ) );
+			button.putClientProperty( "FlatLaf.style", "arc: 0; background: #00000000; hoverBackground: #00000000; pressedBackground: #00000000; borderWidth: 0" );
+		}
 	}
 
 	@Override
@@ -47,7 +50,7 @@ public class ZuneTitlePane
 			try {
 				java.awt.Rectangle bounds = buttonPanel.getBounds();
 				g2.setColor( new Color( 0xf0, 0x78, 0x2b ) );
-				g2.fillRoundRect( bounds.x, bounds.y, bounds.width, bounds.height, 10, 10 );
+				g2.fillRoundRect( bounds.x, bounds.y, bounds.width, bounds.height, 6, 6 );
 			} finally {
 				g2.dispose();
 			}
