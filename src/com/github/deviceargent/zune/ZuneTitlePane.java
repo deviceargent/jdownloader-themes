@@ -26,7 +26,7 @@ public class ZuneTitlePane
 	protected JButton createButton( String type, String accessibleName, ActionListener actionListener ) {
 		JButton button = super.createButton( type, accessibleName, actionListener );
 		button.putClientProperty( "FlatLaf.style",
-			"arc: 3; background: #52758D; hoverBackground: #8FB4C9; pressedBackground: #315266" );
+			"background: #52758D; hoverBackground: #8FB4C9; pressedBackground: #315266" );
 		return button;
 	}
 

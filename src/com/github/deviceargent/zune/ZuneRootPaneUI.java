@@ -23,6 +23,14 @@ public class ZuneRootPaneUI
 			glassPane = new ZuneGlassPane( rootPane );
 			rootPane.setGlassPane( glassPane );
 			glassPane.setVisible( true );
+			rootPane.addPropertyChangeListener( "glassPane", event -> {
+				if( rootPane.getGlassPane() != glassPane )
+					SwingUtilities.invokeLater( () -> {
+						rootPane.setGlassPane( glassPane );
+						glassPane.setVisible( true );
+						glassPane.repaint();
+					} );
+			} );
 			SwingUtilities.invokeLater( () -> {
 				if( rootPane.getGlassPane() != glassPane )
 					rootPane.setGlassPane( glassPane );
