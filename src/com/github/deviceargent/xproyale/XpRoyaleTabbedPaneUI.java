@@ -21,6 +21,7 @@ public class XpRoyaleTabbedPaneUI
 
 	@Override
 	protected void paintTabSelection( Graphics g, int tabPlacement, int x, int y, int w, int h, int selectedIndex ) {
+		super.paintTabSelection( g, tabPlacement, x, y, w, h, selectedIndex );
 		if( tabPlacement != javax.swing.JTabbedPane.TOP && tabPlacement != javax.swing.JTabbedPane.BOTTOM )
 			return;
 		Graphics2D g2 = (Graphics2D) g.create();

@@ -2,6 +2,7 @@ package com.github.deviceargent.xproyale;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.UIManager;
+import javax.swing.UIDefaults;
 
 public class XpRoyale
 	extends FlatLightLaf
@@ -16,6 +17,13 @@ public class XpRoyale
 
 	public static void installLafInfo() {
 		installLafInfo( NAME, XpRoyale.class );
+	}
+
+	@Override
+	public UIDefaults getDefaults() {
+		UIDefaults defaults = super.getDefaults();
+		defaults.put( "TabbedPaneUI", XpRoyaleTabbedPaneUI.class.getName() );
+		return defaults;
 	}
 
 	@Override
