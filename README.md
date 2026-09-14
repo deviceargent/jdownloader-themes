@@ -30,5 +30,7 @@ desarrollar el tema antes de decidir si la siguiente variante será `Zune`.
 
 ## Estado
 
-Alpha inicial. Falta desarrollar la titlebar personalizada, los highlights
-tipo Royale y una dirección final para iconos, tablas y barras de progreso.
+Alpha inicial. Incluye una titlebar Royale con gradiente y controles de ventana
+dibujados, además de botones con relieve y estados XP básicos. Falta validar si
+la superficie clara necesita una variante más oscura antes de decidir entre
+seguir con Royale o pasar a Zune.
