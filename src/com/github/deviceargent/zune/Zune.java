@@ -8,8 +8,15 @@ import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.AWTEventListener;
 import java.awt.event.WindowEvent;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
+import javax.swing.JLayer;
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JComponent;
+import javax.swing.JScrollPane;
+import javax.swing.JViewport;
+import javax.swing.SwingUtilities;
 import javax.swing.UIDefaults;
 
 public class Zune
@@ -36,15 +43,34 @@ public class Zune
 	private static void applyTabbedPaneUI( Component component ) {
 		if( component instanceof JTabbedPane && component.getClass().getName().equals( "jd.gui.swing.jdgui.MainTabbedPane" ) ) {
 			JTabbedPane tabs = (JTabbedPane) component;
-			tabs.setUI( new ZuneTabbedPaneUI() );
-			tabs.setOpaque( false );
+			if( tabs.getClientProperty( Zune.class ) == null ) {
+				tabs.putClientProperty( Zune.class, Boolean.TRUE );
+				tabs.setUI( new ZuneTabbedPaneUI() );
+				tabs.setOpaque( false );
+				tabs.addChangeListener( event -> SwingUtilities.invokeLater( () -> applyTabbedPaneUI( tabs ) ) );
+				tabs.addContainerListener( new ContainerAdapter() {
+					@Override
+					public void componentAdded( ContainerEvent event ) {
+						SwingUtilities.invokeLater( () -> applyTabbedPaneUI( tabs ) );
+					}
+				} );
+			}
 			Component selected = tabs.getSelectedComponent();
 			if( selected instanceof JComponent )
-				((JComponent) selected).setOpaque( false );
+				clearContainerOpacity( (JComponent) selected );
 		}
 		if( component instanceof Container )
 			for( Component child : ((Container) component).getComponents() )
 				applyTabbedPaneUI( child );
+	}
+
+	private static void clearContainerOpacity( JComponent component ) {
+		if( component instanceof JPanel || component instanceof JScrollPane || component instanceof JViewport || component instanceof JLayer )
+			component.setOpaque( false );
+		if( component instanceof Container )
+			for( Component child : ((Container) component).getComponents() )
+				if( child instanceof JComponent )
+					clearContainerOpacity( (JComponent) child );
 	}
 
 	public static void installLafInfo() {
