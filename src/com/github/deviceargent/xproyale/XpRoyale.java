@@ -1,6 +1,7 @@
 package com.github.deviceargent.xproyale;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.UIManager;
 
 public class XpRoyale
 	extends FlatLightLaf
@@ -8,7 +9,9 @@ public class XpRoyale
 	public static final String NAME = "XpRoyale";
 
 	public static boolean setup() {
-		return setup( new XpRoyale() );
+		boolean installed = setup( new XpRoyale() );
+		UIManager.put( "TabbedPaneUI", XpRoyaleTabbedPaneUI.class.getName() );
+		return installed;
 	}
 
 	public static void installLafInfo() {
