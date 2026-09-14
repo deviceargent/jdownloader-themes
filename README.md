@@ -7,6 +7,8 @@ Primera iteración del tema **XP Royale Blue** para JDownloader 2.
 Inspirado en Windows XP Royale: azul cielo brillante, superficies plateadas,
 bordes suaves y controles con volumen. Esta rama es un punto de partida para
 desarrollar el tema antes de decidir si la siguiente variante será `Zune`.
+La superficie general usa ahora el crema cálido de XP y las pestañas llevan un
+subrayado degradado naranja-amarillo.
 
 ## Paleta inicial
 
