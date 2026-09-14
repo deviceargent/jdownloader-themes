@@ -1,7 +1,6 @@
 package com.github.deviceargent.zune;
 
 import java.awt.Color;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
@@ -22,10 +21,14 @@ public class ZunePanelUI
 		}
 		Graphics2D g2 = (Graphics2D) g.create();
 		try {
-			g2.setPaint( new GradientPaint( 0, 0, new Color( 0x32, 0x3e, 0x48 ), 0, c.getHeight(), new Color( 0x09, 0x0b, 0x0e ) ) );
+			g2.setColor( new Color( 0x1b, 0x21, 0x26 ) );
 			g2.fillRect( 0, 0, c.getWidth(), c.getHeight() );
-			g2.setPaint( new GradientPaint( 0, 0, new Color( 0xff, 0xff, 0xff, 32 ), 0, Math.max( 1, c.getHeight() / 3 ), new Color( 0xff, 0xff, 0xff, 0 ) ) );
-			g2.fillRect( 0, 0, c.getWidth(), Math.max( 1, c.getHeight() / 3 ) );
+			g2.setColor( new Color( 0x24, 0x2c, 0x33 ) );
+			for( int x = -c.getHeight(); x < c.getWidth(); x += 8 )
+				g2.drawLine( x, 0, x + c.getHeight(), c.getHeight() );
+			g2.setColor( new Color( 0x16, 0x1b, 0x20 ) );
+			for( int x = 0; x < c.getWidth() + c.getHeight(); x += 8 )
+				g2.drawLine( x, 0, x - c.getHeight(), c.getHeight() );
 		} finally {
 			g2.dispose();
 		}
