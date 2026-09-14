@@ -67,10 +67,18 @@ public class Zune
 	private static void clearContainerOpacity( JComponent component ) {
 		if( component instanceof JPanel || component instanceof JScrollPane || component instanceof JViewport || component instanceof JLayer )
 			component.setOpaque( false );
-		if( component instanceof Container )
+		if( component instanceof Container ) {
+			((Container) component).addContainerListener( new ContainerAdapter() {
+				@Override
+				public void componentAdded( ContainerEvent event ) {
+					if( event.getChild() instanceof JComponent )
+						clearContainerOpacity( (JComponent) event.getChild() );
+				}
+			} );
 			for( Component child : ((Container) component).getComponents() )
 				if( child instanceof JComponent )
 					clearContainerOpacity( (JComponent) child );
+		}
 	}
 
 	public static void installLafInfo() {
