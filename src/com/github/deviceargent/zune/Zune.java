@@ -19,7 +19,6 @@ public class Zune
 	@Override
 	public UIDefaults getDefaults() {
 		UIDefaults defaults = super.getDefaults();
-		defaults.put( "RootPaneUI", ZuneRootPaneUI.class.getName() );
 		return defaults;
 	}
 
