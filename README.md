@@ -24,7 +24,7 @@ subrayado degradado naranja-amarillo.
 
 ## Instalación
 
-1. Copiar `FlatXpRoyale.jar` a `libs\laf\`.
+1. Copiar `FlatXPRoyale.jar` a `libs\laf\`.
 2. Copiar `cfg/XpRoyale.json` a `cfg\laf\`.
 3. Configurar `customlookandfeelclass` como
    `com.github.deviceargent.xproyale.XpRoyale`.
