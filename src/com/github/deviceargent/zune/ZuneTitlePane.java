@@ -32,6 +32,7 @@ public class ZuneTitlePane
 		if( button != null ) {
 			button.setUI( new BasicButtonUI() );
 			button.setOpaque( false );
+			button.setForeground( new Color( 0x11, 0x11, 0x11 ) );
 			button.setBorderPainted( false );
 			button.setFocusPainted( false );
 			button.setBackground( new Color( 0, 0, 0, 0 ) );
