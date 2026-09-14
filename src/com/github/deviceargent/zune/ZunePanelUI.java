@@ -22,7 +22,7 @@ public class ZunePanelUI
 		}
 		Graphics2D g2 = (Graphics2D) g.create();
 		try {
-			g2.setPaint( new GradientPaint( 0, 0, new Color( 0x28, 0x32, 0x3a ), 0, c.getHeight(), new Color( 0x09, 0x0b, 0x0e ) ) );
+			g2.setPaint( new GradientPaint( 0, 0, new Color( 0x32, 0x3e, 0x48 ), 0, c.getHeight(), new Color( 0x09, 0x0b, 0x0e ) ) );
 			g2.fillRect( 0, 0, c.getWidth(), c.getHeight() );
 			g2.setPaint( new GradientPaint( 0, 0, new Color( 0xff, 0xff, 0xff, 32 ), 0, Math.max( 1, c.getHeight() / 3 ), new Color( 0xff, 0xff, 0xff, 0 ) ) );
 			g2.fillRect( 0, 0, c.getWidth(), Math.max( 1, c.getHeight() / 3 ) );

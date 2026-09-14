@@ -1,6 +1,7 @@
 package com.github.deviceargent.zune;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import javax.swing.UIDefaults;
 
 public class Zune
 	extends FlatDarkLaf
@@ -13,6 +14,13 @@ public class Zune
 
 	public static void installLafInfo() {
 		installLafInfo( NAME, Zune.class );
+	}
+
+	@Override
+	public UIDefaults getDefaults() {
+		UIDefaults defaults = super.getDefaults();
+		defaults.put( "PanelUI", ZunePanelUI.class.getName() );
+		return defaults;
 	}
 
 	@Override
