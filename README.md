@@ -1,33 +1,30 @@
-# Zune · alpha
+# Zune
 
-Primera base del tema **Zune** para JDownloader 2.
+Tema final **Zune** para JDownloader 2.
 
 ## Dirección visual
 
-Interfaz oscura de reproductor: grafito casi negro, superficies carbón,
-texto blanco cálido y naranja fuerte como único acento. La intención es que el
-contenido y los controles parezcan una interfaz de dispositivo, no una ventana
-de escritorio genérica.
-La primera iteración incluye un cuerpo negro tipo Vista Black con reflejo
-vertical y una titlebar Aero azul grisácea con brillo blanco.
+Interfaz casi negra de reproductor, con texto naranja Orbitron, controles de
+ventana agrupados con brillo Zune y superficies carbón. Los fondos permanecen
+opacos para conservar un repintado estable en Swing.
 
 ## Paleta inicial
 
 | Uso | Color |
 |-----|-------|
-| Fondo | `#1B1B1B` |
-| Superficie | `#242424` |
-| Superficie elevada | `#303030` |
-| Texto | `#F2F0E8` |
-| Texto secundario | `#B8B5AC` |
+| Fondo | `#080A0C` |
+| Superficie | `#101418` |
+| Superficie elevada | `#171C21` |
+| Texto | `#F0782B` |
+| Texto secundario | `#D96725` |
 | Naranja Zune | `#F0782B` |
 | Naranja profundo | `#C75418` |
 
 ## Compatibilidad
 
-Es una alpha oscura. JDownloader puede requerir el parche de progreso descrito
-en la documentación del repositorio para evitar texto blanco hardcodeado en
-filas hijas.
+Es un tema oscuro. JDownloader puede requerir el parche de progreso descrito
+en la documentación de Phosphor para evitar texto blanco hardcodeado en filas
+hijas.
 
 ## Instalación
 
