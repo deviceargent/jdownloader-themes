@@ -1,8 +1,6 @@
-# PixelFizz · alpha
+# PixelFizz
 
-Rama de desarrollo activo del tema **PixelFizz** (8-bit / colores ácidos / 80s).
-
-> Nada de esta rama está garantizado. Ni siquiera este README. 🧪
+Tema final **PixelFizz** (8-bit / colores ácidos / 80s).
 
 ## Paleta actual
 
