@@ -2,7 +2,7 @@
     "textantialiasenabled": true,
     "customlookandfeelclass": "com.github.deviceargent.zune.Zune",
     "windowdecorationenabled": true,
-    "colorforpanelbackground": "#401b1b1b",
+    "colorforpanelbackground": "#ff1b1b1b",
     "colorforpanelheaderbackground": "#ff303030",
     "colorforpanelheaderforeground": "#fff2f0e8",
     "colorforpanelborders": "#ff4a4a4a",
