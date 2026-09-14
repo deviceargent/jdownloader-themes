@@ -14,5 +14,9 @@
     "colorforscrollbarsnormalstate": "#ff5b5b5b",
     "colorforscrollbarsmouseoverstate": "#fff0782b",
     "speedmeterantialiasingenabled": true,
-    "iconsetid": "standard"
+    "iconsetid": "standard",
+    "configlabelenabledtextcolor": "#fff2f0e8",
+    "configlabeldisabledtextcolor": "#ffb8b5ac",
+    "colorforconfigpaneldescriptiontext": "#ffb8b5ac",
+    "colorfortooltipforeground": "#fff2f0e8"
 }
