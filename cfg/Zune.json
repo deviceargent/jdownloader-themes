@@ -3,7 +3,7 @@
     "customlookandfeelclass": "com.github.deviceargent.zune.Zune",
     "windowdecorationenabled": true,
     "colorforpanelbackground": "#401b1b1b",
-    "colorforpanelheaderbackground": "#40303030",
+    "colorforpanelheaderbackground": "#ff303030",
     "colorforpanelheaderforeground": "#fff2f0e8",
     "colorforpanelborders": "#ff4a4a4a",
     "colorfortableselectedrowsbackground": "#fff0782b",
