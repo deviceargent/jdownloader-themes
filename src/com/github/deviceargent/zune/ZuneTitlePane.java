@@ -2,10 +2,8 @@ package com.github.deviceargent.zune;
 
 import com.formdev.flatlaf.ui.FlatTitlePane;
 import java.awt.Color;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JRootPane;
@@ -20,6 +18,17 @@ public class ZuneTitlePane
 
 	public ZuneTitlePane( JRootPane rootPane ) {
 		super( rootPane );
+		if( buttonPanel != null )
+			buttonPanel.setOpaque( false );
+		styleButton( iconifyButton );
+		styleButton( maximizeButton );
+		styleButton( restoreButton );
+		styleButton( closeButton );
+	}
+
+	private void styleButton( JButton button ) {
+		if( button != null )
+			button.putClientProperty( "FlatLaf.style", "arc: 0; background: null; hoverBackground: null; pressedBackground: null; borderWidth: 0" );
 	}
 
 	@Override
@@ -32,23 +41,16 @@ public class ZuneTitlePane
 
 	@Override
 	protected void paintComponent( Graphics g ) {
-		if( !(g instanceof Graphics2D) ) {
-			super.paintComponent( g );
-			return;
-		}
-		Graphics2D g2 = (Graphics2D) g.create();
-		try {
-			g2.setRenderingHint( RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY );
-			g2.setPaint( new GradientPaint( 0, 0, AERO_TOP, 0, getHeight() / 2f, AERO_MIDDLE ) );
-			g2.fillRect( 0, 0, getWidth(), getHeight() );
-			g2.setPaint( new GradientPaint( 0, getHeight() / 2f, AERO_MIDDLE, 0, getHeight(), AERO_BOTTOM ) );
-			g2.fillRect( 0, getHeight() / 2, getWidth(), getHeight() / 2 );
-			g2.setColor( GLOSS );
-			g2.fillRect( 0, 1, getWidth(), 2 );
-			g2.setColor( new Color( 0xff, 0xff, 0xff, 45 ) );
-			g2.fillRect( 0, 4, getWidth(), 1 );
-		} finally {
-			g2.dispose();
+		super.paintComponent( g );
+		if( buttonPanel != null && g instanceof Graphics2D ) {
+			Graphics2D g2 = (Graphics2D) g.create();
+			try {
+				java.awt.Rectangle bounds = buttonPanel.getBounds();
+				g2.setColor( new Color( 0xf0, 0x78, 0x2b ) );
+				g2.fillRoundRect( bounds.x, bounds.y, bounds.width, bounds.height, 10, 10 );
+			} finally {
+				g2.dispose();
+			}
 		}
 	}
 }
