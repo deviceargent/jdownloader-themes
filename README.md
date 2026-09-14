@@ -1,47 +1,35 @@
-# jdownloader-themes
+# Zune · alpha
 
-Colección de temas [FlatLaf](https://www.formdev.com/flatlaf/) para **JDownloader 2**.
+Primera base del tema **Zune** para JDownloader 2.
 
-Cada tema vive en su propia rama. Los temas estables incluyen el jar ya compilado
-en la rama y builds automáticos por CI. Los temas en desarrollo tienen su rama de
-pre-releases (`<tema>-alpha`, `-beta`, ...) donde ocurre la magia antes de llegar a estable.
+## Dirección visual
 
-## Temas
+Interfaz oscura de reproductor: grafito casi negro, superficies carbón,
+texto blanco cálido y naranja fuerte como único acento. La intención es que el
+contenido y los controles parezcan una interfaz de dispositivo, no una ventana
+de escritorio genérica.
 
-| Tema | Estado | Preview | Rama | Descarga |
-|------|--------|---------|------|----------|
-| **Pastel98** | Estable | ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png) | [`Pastel98`](https://github.com/deviceargent/jdownloader-themes/tree/Pastel98) | [FlatPastel98.jar](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/FlatPastel98.jar) |
-| **PixelFizz** | En desarrollo (8-bit / colores ácidos / 80s) | próximamente | [`PixelFizz`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz) · [`PixelFizz-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz-alpha) | — |
-| **VaporGrid** | En desarrollo (retrowave / synthwave) | próximamente | [`VaporGrid-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/VaporGrid-alpha) | [FlatVaporGrid.jar](https://github.com/deviceargent/jdownloader-themes/raw/VaporGrid-alpha/FlatVaporGrid.jar) |
+## Paleta inicial
 
-## Previews
+| Uso | Color |
+|-----|-------|
+| Fondo | `#1B1B1B` |
+| Superficie | `#242424` |
+| Superficie elevada | `#303030` |
+| Texto | `#F2F0E8` |
+| Texto secundario | `#B8B5AC` |
+| Naranja Zune | `#F0782B` |
+| Naranja profundo | `#C75418` |
 
-### Pastel98
+## Compatibilidad
 
-![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png)
+Es una alpha oscura. JDownloader puede requerir el parche de progreso descrito
+en la documentación del repositorio para evitar texto blanco hardcodeado en
+filas hijas.
 
-![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98-2.png)
+## Instalación
 
-## Checklist para temas nuevos
-
-Al arrancar un tema, decidir **si requiere parche de `JDownloader.jar`**:
-
-- JDownloader hardcodea el color del texto en la columna de progreso por luminancia
-  del fondo (`ExtProgressColumn.getDefaultForeground()`): **fondo oscuro → texto
-  blanco ilegible; fondo claro → texto negro legible**
-- Tema **oscuro** → necesita parche del jar (ver `Install-Phosphor.ps1` en
-  [Phosphor](https://github.com/deviceargent/Phosphor)) o aceptar el blanco
-- Tema **claro** → sin parche, funciona de fábrica
-
-> ⚠️ La máquina de desarrollo tiene el jar **siempre parcheado**: lo que vemos acá
-  no es exactamente lo que ve un usuario limpio. Antes de publicar un tema,
-  validar contra un jar sin parchear.
-
-## Instalación rápida
-
-1. Bajá el jar del tema y copialo a `<carpeta de JDownloader 2>\libs\laf\`
-2. Copiá el `.json` del tema (si viene) a `cfg\laf\`
-3. Reiniciá JDownloader y elegí el tema en *Configuración → Interfaz*,
-   o apuntá `customlookandfeelclass` a la clase indicada en el README de cada tema
-
-Cada rama tiene su propio README con instrucciones completas, paleta y detalles.
+1. Copiar `FlatZune.jar` a `libs\laf\`.
+2. Copiar `cfg/Zune.json` a `cfg\laf\`.
+3. Configurar `customlookandfeelclass` como
+   `com.github.deviceargent.zune.Zune`.

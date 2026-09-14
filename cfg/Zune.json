@@ -1,0 +1,18 @@
+{
+    "textantialiasenabled": true,
+    "customlookandfeelclass": "com.github.deviceargent.zune.Zune",
+    "windowdecorationenabled": true,
+    "colorforpanelbackground": "#ff1b1b1b",
+    "colorforpanelheaderbackground": "#ff303030",
+    "colorforpanelheaderforeground": "#fff2f0e8",
+    "colorforpanelborders": "#ff4a4a4a",
+    "colorfortableselectedrowsbackground": "#fff0782b",
+    "colorfortableselectedrowsforeground": "#ffffffff",
+    "colorforprogressbarforeground1": "#fff0782b",
+    "colorforprogressbarforeground2": "#ffc75418",
+    "colorforprogressbarforeground3": "#ffff9a58",
+    "colorforscrollbarsnormalstate": "#ff5b5b5b",
+    "colorforscrollbarsmouseoverstate": "#fff0782b",
+    "speedmeterantialiasingenabled": true,
+    "iconsetid": "standard"
+}
