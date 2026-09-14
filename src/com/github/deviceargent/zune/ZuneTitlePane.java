@@ -2,6 +2,7 @@ package com.github.deviceargent.zune;
 
 import com.formdev.flatlaf.ui.FlatTitlePane;
 import java.awt.Color;
+import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
@@ -53,8 +54,17 @@ public class ZuneTitlePane
 			Graphics2D g2 = (Graphics2D) g.create();
 			try {
 				java.awt.Rectangle bounds = buttonPanel.getBounds();
-				g2.setColor( new Color( 0xf0, 0x78, 0x2b ) );
-				g2.fillRoundRect( bounds.x, bounds.y, bounds.width, bounds.height, 6, 6 );
+				java.awt.geom.RoundRectangle2D shape = new java.awt.geom.RoundRectangle2D.Float(
+					bounds.x, bounds.y, bounds.width, bounds.height, 6, 6 );
+				g2.clip( shape );
+				g2.setPaint( new GradientPaint(
+					0, bounds.y, new Color( 0xff, 0x9a, 0x58 ),
+					0, bounds.y + bounds.height, new Color( 0xc7, 0x54, 0x18 ) ) );
+				g2.fillRect( bounds.x, bounds.y, bounds.width, bounds.height );
+				g2.setPaint( new GradientPaint(
+					0, bounds.y, new Color( 0xff, 0xc0, 0x8f ),
+					0, bounds.y + Math.max( 2, bounds.height / 3 ), new Color( 0xff, 0x9a, 0x58 ) ) );
+				g2.fillRect( bounds.x, bounds.y, bounds.width, Math.max( 2, bounds.height / 3 ) );
 			} finally {
 				g2.dispose();
 			}
