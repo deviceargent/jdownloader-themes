@@ -1,58 +1,37 @@
-# jdownloader-themes
+# Airlock
 
-Colección de temas [FlatLaf](https://www.formdev.com/flatlaf/) para **JDownloader 2**.
+Tema industrial para JDownloader 2, inspirado en paneles de carga y compuertas
+de una nave espacial.
 
-Cada tema vive en su propia rama. Las ramas sin sufijo son las entregas estables;
-las ramas `-alpha` y `-beta` conservan iteraciones históricas o experimentales.
+## Dirección visual
 
-## Temas
+Base negra, superficies de acero oscuro, naranja de advertencia y cian técnico.
+La primera instancia prioriza una base estable y opaca: la geometría diagonal,
+remaches y placas superpuestas quedan como siguiente capa visual.
 
-| Tema | Estado | Preview | Rama | Descarga |
-|------|--------|---------|------|----------|
-| **Pastel98** | Estable | ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png) | [`Pastel98`](https://github.com/deviceargent/jdownloader-themes/tree/Pastel98) | [FlatPastel98.jar](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/FlatPastel98.jar) |
-| **Zune** | Estable | próximamente | [`Zune`](https://github.com/deviceargent/jdownloader-themes/tree/Zune) | [FlatZune.jar](https://github.com/deviceargent/jdownloader-themes/raw/Zune/FlatZune.jar) |
-| **SunsetTape** | Estable | próximamente | [`SunsetTape`](https://github.com/deviceargent/jdownloader-themes/tree/SunsetTape) | [FlatSunsetTape.jar](https://github.com/deviceargent/jdownloader-themes/raw/SunsetTape/FlatSunsetTape.jar) |
-| **PixelFizz** | Estable | próximamente | [`PixelFizz`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz) | [FlatPixelFizz.jar](https://github.com/deviceargent/jdownloader-themes/raw/PixelFizz/FlatPixelFizz.jar) |
-| **VaporGrid** | Estable | próximamente | [`VaporGrid`](https://github.com/deviceargent/jdownloader-themes/tree/VaporGrid) | [FlatVaporGrid.jar](https://github.com/deviceargent/jdownloader-themes/raw/VaporGrid/FlatVaporGrid.jar) |
+## Paleta
 
-## Archivado
+| Uso | Color |
+|-----|-------|
+| Fondo | `#080B0E` |
+| Superficie | `#10161B` |
+| Superficie elevada | `#19232A` |
+| Texto | `#D7E0E5` |
+| Advertencia | `#F0782B` |
+| Cian técnico | `#42D9E8` |
 
-| Tema | Estado | Rama |
-|------|--------|------|
-| **XP Royale** | Archivado; no recomendado | [`XpRoyale-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/XpRoyale-alpha) |
+## Instalación
 
-## Previews
+1. Copiar `FlatAirlock.jar` a `libs\laf\`.
+2. Copiar `cfg/Airlock.json` a `cfg\laf\`.
+3. Configurar `customlookandfeelclass` como
+   `com.github.deviceargent.airlock.Airlock`.
+4. Reiniciar JDownloader 2.
 
-### Pastel98
+## Compilar desde fuente
 
-![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png)
-
-![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98-2.png)
-
-> GitHub no ofrece pestañas Markdown reales para contenido arbitrario. Para una
-> portada compacta conviene usar esta tabla como selector y `<details>` para
-> instrucciones largas; los navegadores no recargan la página al abrirlos.
-
-## Checklist para temas nuevos
-
-Al arrancar un tema, decidir **si requiere parche de `JDownloader.jar`**:
-
-- JDownloader hardcodea el color del texto en la columna de progreso por luminancia
-  del fondo (`ExtProgressColumn.getDefaultForeground()`): **fondo oscuro → texto
-  blanco ilegible; fondo claro → texto negro legible**
-- Tema **oscuro** → necesita parche del jar (ver `Install-Phosphor.ps1` en
-  [Phosphor](https://github.com/deviceargent/Phosphor)) o aceptar el blanco
-- Tema **claro** → sin parche, funciona de fábrica
-
-> ⚠️ La máquina de desarrollo tiene el jar **siempre parcheado**: lo que vemos acá
-  no es exactamente lo que ve un usuario limpio. Antes de publicar un tema,
-  validar contra un jar sin parchear.
-
-## Instalación rápida
-
-1. Bajá el jar del tema y copialo a `<carpeta de JDownloader 2>\libs\laf\`
-2. Copiá el `.json` del tema (si viene) a `cfg\laf\`
-3. Reiniciá JDownloader y elegí el tema en *Configuración → Interfaz*,
-   o apuntá `customlookandfeelclass` a la clase indicada en el README de cada tema
-
-Cada rama tiene su propio README con instrucciones completas, paleta y detalles.
+```bash
+javac -cp flatlaf.jar -d bin src/com/github/deviceargent/airlock/*.java
+cp src/com/github/deviceargent/airlock/Airlock.properties bin/com/github/deviceargent/airlock/
+jar cf FlatAirlock.jar -C bin .
+```
