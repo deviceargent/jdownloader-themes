@@ -5,9 +5,10 @@ de una nave espacial.
 
 ## Dirección visual
 
-Base negra, superficies de acero oscuro, naranja de advertencia y cian técnico.
-La primera instancia prioriza una base estable y opaca: la geometría diagonal,
-remaches y placas superpuestas quedan como siguiente capa visual.
+Base negra, superficies de acero oscuro, cian eléctrico para hover/interacción
+y cian técnico para acentos. La primera instancia prioriza una base estable y
+opaca: la geometría diagonal, remaches y placas superpuestas quedan como
+siguiente capa visual.
 
 ## Paleta
 
@@ -17,7 +18,7 @@ remaches y placas superpuestas quedan como siguiente capa visual.
 | Superficie | `#10161B` |
 | Superficie elevada | `#19232A` |
 | Texto | `#D7E0E5` |
-| Advertencia | `#F0782B` |
+| Cian eléctrico (hover) | `#00D4FF` |
 | Cian técnico | `#42D9E8` |
 
 ## Instalación
