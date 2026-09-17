@@ -3,56 +3,102 @@
 Colección de temas [FlatLaf](https://www.formdev.com/flatlaf/) para **JDownloader 2**.
 
 Cada tema vive en su propia rama. Las ramas sin sufijo son las entregas estables;
-las ramas `-alpha` y `-beta` conservan iteraciones históricas o experimentales.
+las ramas `-alpha` conservan iteraciones históricas o experimentales.
 
-## Temas
+## Temas estables
 
-| Tema | Estado | Preview | Rama | Descarga |
-|------|--------|---------|------|----------|
-| **Pastel98** | Estable | ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png) | [`Pastel98`](https://github.com/deviceargent/jdownloader-themes/tree/Pastel98) | [FlatPastel98.jar](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/FlatPastel98.jar) |
-| **Zune** | Estable | próximamente | [`Zune`](https://github.com/deviceargent/jdownloader-themes/tree/Zune) | [FlatZune.jar](https://github.com/deviceargent/jdownloader-themes/raw/Zune/FlatZune.jar) |
-| **SunsetTape** | Estable | próximamente | [`SunsetTape`](https://github.com/deviceargent/jdownloader-themes/tree/SunsetTape) | [FlatSunsetTape.jar](https://github.com/deviceargent/jdownloader-themes/raw/SunsetTape/FlatSunsetTape.jar) |
-| **PixelFizz** | Estable | próximamente | [`PixelFizz`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz) | [FlatPixelFizz.jar](https://github.com/deviceargent/jdownloader-themes/raw/PixelFizz/FlatPixelFizz.jar) |
-| **VaporGrid** | Estable | próximamente | [`VaporGrid`](https://github.com/deviceargent/jdownloader-themes/tree/VaporGrid) | [FlatVaporGrid.jar](https://github.com/deviceargent/jdownloader-themes/raw/VaporGrid/FlatVaporGrid.jar) |
+| Tema | Preview | Rama | Descarga |
+|------|---------|------|----------|
+| **Pastel98** | ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png) | [`Pastel98`](https://github.com/deviceargent/jdownloader-themes/tree/Pastel98) | [FlatPastel98.jar](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/FlatPastel98.jar) |
+| **Zune** | próximamente | [`Zune`](https://github.com/deviceargent/jdownloader-themes/tree/Zune) | [FlatZune.jar](https://github.com/deviceargent/jdownloader-themes/raw/Zune/FlatZune.jar) |
+| **SunsetTape** | próximamente | [`SunsetTape`](https://github.com/deviceargent/jdownloader-themes/tree/SunsetTape) | [FlatSunsetTape.jar](https://github.com/deviceargent/jdownloader-themes/raw/SunsetTape/FlatSunsetTape.jar) |
+| **PixelFizz** | próximamente | [`PixelFizz`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz) | [FlatPixelFizz.jar](https://github.com/deviceargent/jdownloader-themes/raw/PixelFizz/FlatPixelFizz.jar) |
+| **VaporGrid** | próximamente | [`VaporGrid`](https://github.com/deviceargent/jdownloader-themes/tree/VaporGrid) | [FlatVaporGrid.jar](https://github.com/deviceargent/jdownloader-themes/raw/VaporGrid/FlatVaporGrid.jar) |
+| **Airlock** | próximamente | [`Airlock`](https://github.com/deviceargent/jdownloader-themes/tree/Airlock) | [FlatAirlock.jar](https://github.com/deviceargent/jdownloader-themes/raw/Airlock/FlatAirlock.jar) |
+
+## Detalles por tema
+
+<details>
+<summary><b>Pastel98</b> — Paleta pastel colorida estilo Windows 98</summary>
+
+- **Estilo:** Light, colores pastel vibrantes
+- **Fuente:** Sistema
+- **Rama:** [`Pastel98`](https://github.com/deviceargent/jdownloader-themes/tree/Pastel98)
+- **Preview:**
+  ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png)
+  ![Pastel98-2](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98-2.png)
+- **Instalación:** Copiar `FlatPastel98.jar` a `libs\laf\`
+
+</details>
+
+<details>
+<summary><b>Zune</b> — Interfaz oscura estilo dispositivo Zune</summary>
+
+- **Estilo:** Dark, acentos naranjas, fuente Orbitron
+- **Fuente:** Orbitron
+- **Rama:** [`Zune`](https://github.com/deviceargent/jdownloader-themes/tree/Zune)
+- **Instalación:**
+  1. Copiar `FlatZune.jar` a `libs\laf\`
+  2. Copiar `cfg/Zune.json` a `cfg\laf\`
+  3. Configurar `customlookandfeelclass` como `com.github.deviceargent.zune.Zune`
+
+</details>
+
+<details>
+<summary><b>SunsetTape</b> — Estética retrowave synthwave</summary>
+
+- **Estilo:** Dark, gradientes neón, estilo 80s
+- **Rama:** [`SunsetTape`](https://github.com/deviceargent/jdownloader-themes/tree/SunsetTape)
+- **Instalación:** Copiar `FlatSunsetTape.jar` a `libs\laf\`
+
+</details>
+
+<details>
+<summary><b>PixelFizz</b> — Inspirado en pixel art</summary>
+
+- **Estilo:** Dark, acentos pixelados
+- **Rama:** [`PixelFizz`](https://github.com/deviceargent/jdownloader-themes/tree/PixelFizz)
+- **Instalación:** Copiar `FlatPixelFizz.jar` a `libs\laf\`
+
+</details>
+
+<details>
+<summary><b>VaporGrid</b> — Estética vaporwave con grid</summary>
+
+- **Estilo:** Dark, grid vaporwave, colores neón
+- **Rama:** [`VaporGrid`](https://github.com/deviceargent/jdownloader-themes/tree/VaporGrid)
+- **Instalación:** Copiar `FlatVaporGrid.jar` a `libs\laf\`
+
+</details>
+
+<details>
+<summary><b>Airlock</b> — Consola industrial de cabina espacial</summary>
+
+- **Estilo:** Dark, superficies de acero oscuro, cian eléctrico
+- **Fuente:** Orbitron
+- **Rama:** [`Airlock`](https://github.com/deviceargent/jdownloader-themes/tree/Airlock)
+- **Instalación:**
+  1. Copiar `FlatAirlock.jar` a `libs\laf\`
+  2. Copiar `cfg/Airlock.json` a `cfg\laf\`
+  3. Configurar `customlookandfeelclass` como `com.github.deviceargent.airlock.Airlock`
+
+</details>
+
+## Instalación general
+
+1. Descargá el `.jar` del tema que prefieras
+2. Copialo a `<carpeta de JDownloader 2>\libs\laf\`
+3. Si el tema incluye `.json`, copialo a `cfg\laf\`
+4. Reiniciá JDownloader
+5. Elegí el tema en *Configuración → Interfaz*, o configurá `customlookandfeelclass`
 
 ## Archivado
 
-| Tema | Estado | Rama |
-|------|--------|------|
-| **XP Royale** | Archivado; no recomendado | [`XpRoyale-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/XpRoyale-alpha) |
+| Tema | Rama | Notas |
+|------|------|-------|
+| **XP Royale** | [`XpRoyale-alpha`](https://github.com/deviceargent/jdownloader-themes/tree/XpRoyale-alpha) | No recomendado |
 
-## Previews
+## Notas para desarrollo
 
-### Pastel98
-
-![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png)
-
-![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98-2.png)
-
-> GitHub no ofrece pestañas Markdown reales para contenido arbitrario. Para una
-> portada compacta conviene usar esta tabla como selector y `<details>` para
-> instrucciones largas; los navegadores no recargan la página al abrirlos.
-
-## Checklist para temas nuevos
-
-Al arrancar un tema, decidir **si requiere parche de `JDownloader.jar`**:
-
-- JDownloader hardcodea el color del texto en la columna de progreso por luminancia
-  del fondo (`ExtProgressColumn.getDefaultForeground()`): **fondo oscuro → texto
-  blanco ilegible; fondo claro → texto negro legible**
-- Tema **oscuro** → necesita parche del jar (ver `Install-Phosphor.ps1` en
-  [Phosphor](https://github.com/deviceargent/Phosphor)) o aceptar el blanco
-- Tema **claro** → sin parche, funciona de fábrica
-
-> ⚠️ La máquina de desarrollo tiene el jar **siempre parcheado**: lo que vemos acá
-  no es exactamente lo que ve un usuario limpio. Antes de publicar un tema,
-  validar contra un jar sin parchear.
-
-## Instalación rápida
-
-1. Bajá el jar del tema y copialo a `<carpeta de JDownloader 2>\libs\laf\`
-2. Copiá el `.json` del tema (si viene) a `cfg\laf\`
-3. Reiniciá JDownloader y elegí el tema en *Configuración → Interfaz*,
-   o apuntá `customlookandfeelclass` a la clase indicada en el README de cada tema
-
-Cada rama tiene su propio README con instrucciones completas, paleta y detalles.
+- Cada tema oscuro requiere parche de `JDownloader.jar` para que las barras de progreso hereden color del tema (ver [Phosphor](https://github.com/deviceargent/Phosphor))
+- La máquina de desarrollo tiene el jar siempre parcheado; validar contra jar limpio antes de publicar
