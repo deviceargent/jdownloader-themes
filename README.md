@@ -20,12 +20,12 @@ cd jdownloader-themes
 
 | Tema | Estilo | Custom UI | Preview |
 |------|--------|-----------|---------|
-| **Airlock** | Consola industrial, cian electrico | No | proximamente |
-| **Pastel98** | Pastel colorido, Windows 98 | PanelUI, DesktopPaneUI | ![Pastel98](https://github.com/deviceargent/jdownloader-themes/raw/Pastel98/screenshots/Pastel98.png) |
-| **SunsetTape** | Retrowave synthwave | RootPaneUI, TitlePane | proximamente |
-| **PixelFizz** | Pixel art, aura neon | ButtonUI | proximamente |
-| **VaporGrid** | Vaporwave con grid | PanelUI, DesktopPaneUI | proximamente |
-| **Zune** | Dispositivo Zune, Orbitron | RootPaneUI, TitlePane | proximamente |
+| **Airlock** | Consola industrial, cian electrico | No | ![Airlock](installer/themes/Airlock/screenshots/AIRLOCK.png) |
+| **Pastel98** | Pastel colorido, Windows 98 | PanelUI, DesktopPaneUI | ![Pastel98](installer/themes/Pastel98/screenshots/Pastel98.png) |
+| **SunsetTape** | Retrowave synthwave | RootPaneUI, TitlePane | ![SunsetTape](installer/themes/SunsetTape/screenshots/SunsetTape.png) |
+| **PixelFizz** | Pixel art, aura neon | ButtonUI | ![PixelFizz](installer/themes/PixelFizz/screenshots/PixelFizz.png) |
+| **VaporGrid** | Vaporwave con grid | PanelUI, DesktopPaneUI | ![VaporGrid](installer/themes/VaporGrid/screenshots/VaporGrid.png) |
+| **Zune** | Dispositivo Zune, Orbitron | RootPaneUI, TitlePane | ![Zune](installer/themes/Zune/screenshots/Zune.png) |
 
 ## Estructura del repo
 
