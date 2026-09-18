@@ -1,4 +1,4 @@
-bin/
-*.class
+/bin/
 flatlaf.jar
 *.license
+*.bak*
