@@ -122,34 +122,76 @@ function Inject-Classes {
 }
 
 # --- Apply ExtProgressColumn patch ---
+# Bytecode patch: forces getDefaultForeground() to return null instead of
+# hardcoded black/white. Bars inherit theme foreground via UIDefaults.
+#
+# Pattern searched: 2A B6 ?? ?? B8 ?? ?? B0
+#   aload_0; invokevirtual getDefaultBackground; invokestatic getContrastBWColor; areturn
+# Replaced with: 01 B0 00 00 00 00 00 00
+#   aconst_null; areturn; nop x6
 function Apply-ProgressPatch {
     param([string]$JarPath)
-    
-    $patchFile = "$ScriptDir\patches\ExtProgressColumn.class"
-    if (-not (Test-Path $patchFile)) {
-        Write-Host "  Parche no encontrado: $patchFile" -ForegroundColor Yellow
-        return $false
-    }
-    
-    $tempDir = Join-Path $env:TEMP "jd-patch-progress"
-    if (Test-Path $tempDir) { Remove-Item $tempDir -Recurse -Force }
-    New-Item -ItemType Directory -Path "$tempDir\org\appwork\swing\exttable\columns" -Force | Out-Null
-    Copy-Item $patchFile "$tempDir\org\appwork\swing\exttable\columns\ExtProgressColumn.class"
-    
-    Push-Location $tempDir
+
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $entryName = "org/appwork/swing/exttable/columns/ExtProgressColumn.class"
+
+    $zip = [System.IO.Compression.ZipFile]::Open($JarPath, "Update")
     try {
-        & jar uf $JarPath "org/appwork/swing/exttable/columns/ExtProgressColumn.class"
-        if ($LASTEXITCODE -ne 0) {
-            Write-Host "  Error al aplicar parche de progreso" -ForegroundColor Red
+        $entry = $zip.GetEntry($entryName)
+        if (-not $entry) {
+            Write-Host "  ExtProgressColumn.class not found in jar" -ForegroundColor Yellow
             return $false
         }
+
+        $ms = New-Object System.IO.MemoryStream
+        $s = $entry.Open()
+        $s.CopyTo($ms); $s.Dispose()
+        $bytes = $ms.ToArray(); $ms.Dispose()
+
+        # Search for pattern: 2A B6 ?? ?? B8 ?? ?? B0
+        $hits = @()
+        for ($i = 0; $i -le $bytes.Length - 8; $i++) {
+            if ($bytes[$i] -eq 0x2A -and $bytes[$i+1] -eq 0xB6 -and
+                $bytes[$i+4] -eq 0xB8 -and $bytes[$i+7] -eq 0xB0) {
+                $hits += $i
+            }
+        }
+
+        if ($hits.Count -gt 1) {
+            Write-Host "  Pattern matched $($hits.Count) times - multiple occurrences" -ForegroundColor Yellow
+        }
+
+        if ($hits.Count -eq 0) {
+            # Check if already patched (aconst_null; areturn at expected offset)
+            for ($i = 0; $i -le $bytes.Length - 8; $i++) {
+                if ($bytes[$i] -eq 0x01 -and $bytes[$i+1] -eq 0xB0 -and
+                    $bytes[$i+2] -eq 0x00 -and $bytes[$i+3] -eq 0x00 -and
+                    $bytes[$i+4] -eq 0x00 -and $bytes[$i+5] -eq 0x00 -and
+                    $bytes[$i+6] -eq 0x00 -and $bytes[$i+7] -eq 0x00) {
+                    Write-Host "  ExtProgressColumn already patched" -ForegroundColor Green
+                    return $true
+                }
+            }
+            Write-Host "  Pattern not found - unsupported JD version" -ForegroundColor Yellow
+            return $false
+        }
+
+        $off = $hits[0]
+        # Replace with: aconst_null(01) areturn(B0) nop x6 (00)
+        $replacement = [byte[]](0x01, 0xB0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00)
+        for ($k = 0; $k -lt 8; $k++) { $bytes[$off + $k] = $replacement[$k] }
+
+        $entry.Delete()
+        $newEntry = $zip.CreateEntry($entryName)
+        $os = $newEntry.Open()
+        $os.Write($bytes, 0, $bytes.Length)
+        $os.Dispose()
+
+        Write-Host "  ExtProgressColumn patched (offset $off)" -ForegroundColor Green
+        return $true
     } finally {
-        Pop-Location
+        $zip.Dispose()
     }
-    
-    Remove-Item $tempDir -Recurse -Force -ErrorAction SilentlyContinue
-    Write-Host "  Parche ExtProgressColumn aplicado" -ForegroundColor Green
-    return $true
 }
 
 # --- Update JDownloader settings ---
