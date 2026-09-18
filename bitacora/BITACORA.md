@@ -262,6 +262,17 @@ artefactos de repaint en Swing. Los fondos opacos son mas estables.
 GitHub no soporta tabs Markdown reales. Usar `<details>` para contenido
 expandible. Los screenshots deben subirse a cada rama en `screenshots/`.
 
+### Pintado programatico de iconos standard
+
+Los iconos de JD (play, pause, stop, carpeta, etc.) usan colores hardcodeados.
+Se pueden recolorear con el color de acento del tema mediante:
+
+- `IconUI` o `IconEffect` de FlatLaf
+- Clases custom que reemplazan `UIManager.getIcon()`
+- Filtros de imagen via `BufferedImageOp`
+
+**Estado:** Ya implementado en Phosphor. Pendiente replicar en otros temas.
+
 ---
 
 ## Log de sesiones
