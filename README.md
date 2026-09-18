@@ -30,5 +30,17 @@ hijas.
 
 1. Copiar `FlatZune.jar` a `libs\laf\`.
 2. Copiar `cfg/Zune.json` a `cfg\laf\`.
-3. Configurar `customlookandfeelclass` como
+3. **Inyectar las clases en `JDownloader.jar`:**
+
+   ```bash
+   jar uf /ruta/a/JDownloader.jar -C bin com/github/deviceargent/zune/
+   ```
+
+   JDownloader **no carga clases custom** desde `libs/laf/*.jar`. Solo lee el
+   JSON de colores de `cfg/laf/`. Para que la clase LAF y su `RootPaneUI`
+   funcionen, los `.class` y `.properties` deben estar dentro de
+   `JDownloader.jar`.
+
+4. Configurar `customlookandfeelclass` como
    `com.github.deviceargent.zune.Zune`.
+5. Reiniciar JDownloader.
