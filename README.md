@@ -89,8 +89,17 @@ las ramas `-alpha` conservan iteraciones históricas o experimentales.
 1. Descargá el `.jar` del tema que prefieras
 2. Copialo a `<carpeta de JDownloader 2>\libs\laf\`
 3. Si el tema incluye `.json`, copialo a `cfg\laf\`
-4. Reiniciá JDownloader
-5. Elegí el tema en *Configuración → Interfaz*, o configurá `customlookandfeelclass`
+4. **Si el tema tiene custom UI classes** (RootPaneUI, TitlePane, etc.):
+   inyectar los `.class` y `.properties` en `JDownloader.jar`:
+   ```bash
+   jar uf /ruta/a/JDownloader.jar -C bin com/github/deviceargent/<tema>/
+   ```
+5. Configurar `customlookandfeelclass` en Advanced Settings
+6. Reiniciá JDownloader
+
+> **Importante:** JDownloader **no carga clases** de `libs/laf/*.jar`. Solo lee
+> el JSON de colores de `cfg/laf/`. Para que custom UI (title pane, botones, etc.)
+> funcionen, los `.class` y `.properties` deben estar dentro de `JDownloader.jar`.
 
 ## Archivado
 
@@ -101,4 +110,6 @@ las ramas `-alpha` conservan iteraciones históricas o experimentales.
 ## Notas para desarrollo
 
 - Cada tema oscuro requiere parche de `JDownloader.jar` para que las barras de progreso hereden color del tema (ver [Phosphor](https://github.com/deviceargent/Phosphor))
+- **JD no carga clases custom de `libs/laf/`.** Las clases LAF deben inyectarse en `JDownloader.jar` con `jar uf`
 - La máquina de desarrollo tiene el jar siempre parcheado; validar contra jar limpio antes de publicar
+- JD se auto-actualiza y puede pisar el jar parcheado; reaplicar después de cada update
