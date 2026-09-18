@@ -83,6 +83,38 @@ function Backup-JDJar {
     return $backupPath
 }
 
+# --- Restore JDownloader.jar from backup ---
+# Restores the cleanest jar before injecting new theme classes.
+# Priority: prepatch > oldest theme backup (avoids stacked modifications).
+function Restore-JDJar {
+    param([string]$JarPath)
+
+    # Look for backups in priority order
+    $candidates = @()
+
+    # 1. Prepatch backup (cleanest, before any modifications)
+    $prepatch = Get-ChildItem "$JarPath.bak-prepatch-*" | Sort-Object Name | Select-Object -First 1
+    if ($prepatch) { $candidates += $prepatch }
+
+    # 2. Oldest theme backup (before theme-specific injections)
+    $oldestTheme = Get-ChildItem "$JarPath.bak-theme-*" | Sort-Object Name | Select-Object -First 1
+    if ($oldestTheme) { $candidates += $oldestTheme }
+
+    # 3. Any other backup
+    $anyBackup = Get-ChildItem "$JarPath.bak-*" | Sort-Object Name | Select-Object -First 1
+    if ($anyBackup -and $anyBackup.FullName -notin $candidates.FullName) { $candidates += $anyBackup }
+
+    if ($candidates.Count -eq 0) {
+        Write-Host "  No backups found - using current jar" -ForegroundColor Yellow
+        return $false
+    }
+
+    $restore = $candidates[0]
+    Write-Host "  Restoring from: $($restore.Name)" -ForegroundColor Cyan
+    Copy-Item $restore.FullName $JarPath -Force
+    return $true
+}
+
 # --- Inject classes into JDownloader.jar ---
 function Inject-Classes {
     param(
@@ -287,7 +319,12 @@ Write-Host ""
 Write-Host "Backup..." -ForegroundColor Cyan
 Backup-JDJar -JarPath $jarPath
 
-# 4. Inject classes if needed
+# 4. Restore from clean backup before injecting
+Write-Host ""
+Write-Host "Restaurando jar limpio..." -ForegroundColor Cyan
+Restore-JDJar -JarPath $jarPath
+
+# 5. Inject classes if needed
 if ($selected.HasCustomUI) {
     Write-Host ""
     Write-Host "Inyectando clases..." -ForegroundColor Cyan
@@ -299,20 +336,20 @@ if ($selected.HasCustomUI) {
     }
 }
 
-# 5. Apply progress patch
+# 6. Apply progress patch
 if ($PatchProgress) {
     Write-Host ""
     Write-Host "Parche de progreso..." -ForegroundColor Cyan
     Apply-ProgressPatch -JarPath $jarPath
 }
 
-# 6. Update settings
+# 7. Update settings
 Write-Host ""
 Write-Host "Configurando..." -ForegroundColor Cyan
 $className = "com.github.deviceargent.$packageName.$($selected.Name)"
 Update-Settings -CfgPath "$JdPath\cfg" -ClassName $className
 
-# 7. Done
+# 8. Done
 Write-Host ""
 Write-Host "=== Instalacion completa ===" -ForegroundColor Green
 Write-Host ""
