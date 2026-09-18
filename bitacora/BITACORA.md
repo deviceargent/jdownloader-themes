@@ -102,23 +102,96 @@ com.github.deviceargent.<tema>/
 
 ### Problema
 
-JDownloader hardcodea el color del texto en la columna de progreso por
-luminancia del fondo (`ExtProgressColumn.getDefaultForeground()`):
-- **Fondo oscuro** → texto blanco ilegible
-- **Fondo claro** → texto negro legible
+JDownloader hardcodea el color del texto y las barras en la columna de progreso
+por luminancia del fondo (`ExtProgressColumn.getDefaultForeground()`):
+- **Fondo oscuro** → texto/barras blanco
+- **Fondo claro** → texto/barras negro
 
-### Solucion
+Esto ignora por completo el LookAndFeel activo. Las barras de progreso en
+child rows quedan negras en temas claros (Pastel98) o blancas en temas oscuros.
 
-Parchear `ExtProgressColumn.class` para que herede el color del tema.
+### Mecanismo del parche
 
-**Ubicacion:** `org/appwork/swing/exttable/columns/ExtProgressColumn.class`
+El metodo `ExtProgressColumn.getDefaultForeground()` tiene este bytecode:
 
-**Backup:** Siempre guardar backup antes de parchear:
+```
+aload_0
+invokevirtual getDefaultBackground
+invokestatic getContrastBWColor    ← calcula negro/blanco por luminancia
+areturn
+```
+
+El parche reemplaza esto con:
+
+```
+aconst_null     ← devuelve null
+areturn
+nop x6          ← relleno
+```
+
+Al devolver `null`, la columna hereda el color del tema via
+`UIDefaults.get("Table.foreground")` o el JSON config
+(`colorforprogressbarforeground*`).
+
+### Patron de busqueda (hex)
+
+```
+2A B6 ?? ?? B8 ?? ?? B0
+```
+
+Donde:
+- `2A` = `aload_0`
+- `B6` = `invokevirtual`
+- `B8` = `invokestatic`
+- `B0` = `areturn`
+
+### Implementacion (PowerShell)
+
+```powershell
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$zip = [System.IO.Compression.ZipFile]::Open($jarPath, "Update")
+# ... buscar patron 2A B6 ?? ?? B8 ?? ?? B0 ...
+# ... reemplazar con 01 B0 00 00 00 00 00 00 ...
+```
+
+Ver `Install-Phosphor.ps1` en [Phosphor](https://github.com/deviceargent/Phosphor)
+para la implementacion completa.
+
+### Por que el parche pre-compilado no funciona
+
+El `ExtProgressColumn.class` extraido de un backup viejo (version anterior de JD)
+puede tener layout de bytecode diferente. El patron de busqueda no matchea y
+el parche falla silenciosamente.
+
+**Solucion correcta:** Aplicar el parche de bytecode directamente sobre el
+`JDownloader.jar` actual, como hace Phosphor.
+
+### Ubicacion
+
+```
+org/appwork/swing/exttable/columns/ExtProgressColumn.class
+```
+
+### Backup
+
+Siempre guardar backup antes de parchear:
 ```
 JDownloader.jar.bak-progress-YYYYMMDD-HHMMSS
 ```
 
-**Referencia:** [Phosphor](https://github.com/deviceargent/Phosphor)
+### Colores del tema en JSON
+
+El JSON config de cada tema define los colores de progress bars:
+
+```json
+{
+    "colorforprogressbarforeground1": "#5fe88ab0",
+    "colorforprogressbarforeground2": "#7fe88ab0",
+    ...
+}
+```
+
+Despues del parche, estas keys son las que controlan el color de las barras.
 
 ---
 
@@ -207,3 +280,29 @@ expandible. Los screenshots deben subirse a cada rama en `screenshots/`.
 - Script `Install-Theme.ps1` con menu interactivo
 - Estructura `installer/themes/<Tema>/` con jars, configs y clases compiladas
 - Bitacora con todos los hallazgos
+
+### 2026-09-17 — Parche ExtProgressColumn para Pastel98
+
+**Objetivo:** Arreglar barras de progreso negras en child rows de Pastel98.
+
+**Problema:** El parche pre-compilado (clase .class extraida de backup viejo)
+no funcionaba con la version actual de JD. Las barras seguian negras.
+
+**Descubrimiento:** El parche de Phosphor no reemplaza la clase completa —
+modifica el bytecode in-situ buscando un patron especifico:
+
+```
+2A B6 ?? ?? B8 ?? ?? B0  (aload_0, invokevirtual, invokestatic, areturn)
+```
+
+Lo reemplaza con:
+
+```
+01 B0 00 00 00 00 00 00  (aconst_null, areturn, nop x6)
+```
+
+**Resultado:** Aplicado correctamente en offset 6262. Barras de progreso
+ahora hereden el color del tema (pink/lilac para Pastel98).
+
+**Leccion:** No usar clases pre-parcheadas de backups viejos. Siempre aplicar
+el parche de bytecode directamente sobre el jar actual.
