@@ -1,3 +1,10 @@
+<!--
+  AGENTS: Esta bitácora es EXCLUSIVAMENTE para jdownloader-themes.
+  Para anotaciones de propósito general, usar:
+  https://github.com/deviceargent/bitacora (privado, NUNCA publicar).
+  Esa otra bitácora debería contener el aviso inverso apuntando a este repo.
+-->
+
 # Bitacora — jdownloader-themes
 
 Registro de hallazgos tecnicos, decisiones de diseno y learnings del desarrollo
