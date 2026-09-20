@@ -298,18 +298,22 @@ panel con gradiente naranja. Esto requiere `ZuneTitlePane` que extiende
 | **jar.exe** | Manipulacion de JDownloader.jar | Alternativa: `System.IO.Compression.ZipFile` |
 | **gh CLI** | Gestion de repo en GitHub | Publicacion, visibilidad, uploads |
 
-### Disponibles en el lab (no utilizadas en temas)
+### Utilizadas para debugging
+
+| Herramienta | Funcion | Uso en el proyecto |
+|-------------|---------|-------------------|
+| **Swingspector 2.1.3** | Inspector de componentes Swing en runtime | Inspeccionar UI delegates, verificar properties de FlatLaf, debugear rendering de componentes custom |
+
+### Disponibles en el lab (no utilizadas)
 
 | Herramienta | Funcion | Por que no se uso |
 |-------------|---------|-------------------|
 | **Swag 1.2.6** | Generador de wrappers para Swing apps | No era necesario para desarrollo de LAF |
-| **Swingspector 2.1.3** | Inspector de componentes Swing en runtime | Las herramientas de debug de FlatLaf fueron suficientes |
 | **Scenic View** | Inspector de escena JavaFX | JD usa Swing, no JavaFX |
 
 **Leccion:** Para desarrollo de temas FlatLaf, las herramientas esenciales
 son: Java JRE, PowerShell, git, y el propio FlatLaf como referencia.
-Las herramientas de inspeccion de Swing son utiles para debugging avanzado
-pero no criticas para el flujo de trabajo de temas.
+Swingspector es util para debugging de componentes Swing/FlatLaf.
 
 ---
 
