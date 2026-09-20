@@ -286,6 +286,33 @@ panel con gradiente naranja. Esto requiere `ZuneTitlePane` que extiende
 
 ---
 
+## Herramientas del lab
+
+### Utilizadas en el desarrollo
+
+| Herramienta | Uso | Notas |
+|-------------|-----|-------|
+| **PowerShell** | Instalador, inyeccion de clases, parches de bytecode | API `ZipFile` mas confiable que `jar uf` en Windows |
+| **git** | Control de versiones, ramas por tema | Cada tema tiene su rama historica |
+| **Java JRE 21 (Temurin)** | Ejecucion de JDownloader para testing | `C:\JD2-Lab\JDownloader\jre\bin\java.exe` |
+| **jar.exe** | Manipulacion de JDownloader.jar | Alternativa: `System.IO.Compression.ZipFile` |
+| **gh CLI** | Gestion de repo en GitHub | Publicacion, visibilidad, uploads |
+
+### Disponibles en el lab (no utilizadas en temas)
+
+| Herramienta | Funcion | Por que no se uso |
+|-------------|---------|-------------------|
+| **Swag 1.2.6** | Generador de wrappers para Swing apps | No era necesario para desarrollo de LAF |
+| **Swingspector 2.1.3** | Inspector de componentes Swing en runtime | Las herramientas de debug de FlatLaf fueron suficientes |
+| **Scenic View** | Inspector de escena JavaFX | JD usa Swing, no JavaFX |
+
+**Leccion:** Para desarrollo de temas FlatLaf, las herramientas esenciales
+son: Java JRE, PowerShell, git, y el propio FlatLaf como referencia.
+Las herramientas de inspeccion de Swing son utiles para debugging avanzado
+pero no criticas para el flujo de trabajo de temas.
+
+---
+
 ## Notas para futuras iteraciones
 
 ### Temas con geometria diagonal
