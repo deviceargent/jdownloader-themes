@@ -214,6 +214,51 @@ JDownloader descarga y aplica updates automaticamente. Esto:
 
 ---
 
+## Cambio de tema: restaurar jar primero
+
+**Fecha:** 2026-09-19
+**Severidad:** Alta
+
+Si un usuario instala tema A y luego tema B sin restaurar, las clases de A
+quedan en `JDownloader.jar` junto con las de B. Esto causa conflictos
+(ambas clases compiten por el mismo UI delegate).
+
+**Solucion:** Antes de inyectar clases de un tema nuevo, restaurar el jar
+desde el backup más limpio disponible:
+
+1. `bak-prepatch-*` → más limpio (sin ningun parche)
+2. `bak-theme-*` → más viejo (menos inyecciones acumuladas)
+3. `bak-*` → cualquier backup
+
+El instalador ahora ejecuta `Restore-JDJar` antes de `Inject-Classes`.
+
+**Regla:** Un tema = un jar limpio + sus clases + su parche.
+
+---
+
+## `jar uf` falla en Windows con PowerShell
+
+**Fecha:** 2026-09-19
+**Severidad:** Media
+
+El comando `jar uf` de JDK a veces falla en PowerShell con errores
+inesperados (encoding, paths, exit code).
+
+**Alternativa confiable:** `System.IO.Compression.ZipFile` de .NET:
+```powershell
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$zip = [System.IO.Compression.ZipFile]::Open($jarPath, "Update")
+$entry.Delete()
+$newEntry = $zip.CreateEntry($entryName)
+# ... escribir bytes ...
+$zip.Dispose()
+```
+
+Esta API funciona directamente sobre el `.jar` (que es un ZIP) sin
+depender de `jar.exe` del JDK.
+
+---
+
 ## Decisiones de diseno
 
 ### Por que FlatDarkLaf como base
@@ -275,6 +320,22 @@ Se pueden recolorear con el color de acento del tema mediante:
 
 ---
 
+## Repos de referencia
+
+### Phosphor
+
+`https://github.com/deviceargent/Phosphor` — Tema FlatLaf con progress bars
+personalizadas. Contiene `Install-Phosphor.ps1` que es la referencia para:
+
+- El parche de `ExtProgressColumn` (bytecode patching)
+- La estructura del instalador
+- El mecanismo de inyección de clases
+
+Cualquier cambio en el instalador debe verificarse contra Phosphor para
+mantener compatibilidad.
+
+---
+
 ## Log de sesiones
 
 ### 2026-09-17 — Sesion de debugging Zune
@@ -324,3 +385,40 @@ ahora hereden el color del tema (pink/lilac para Pastel98).
 
 **Leccion:** No usar clases pre-parcheadas de backups viejos. Siempre aplicar
 el parche de bytecode directamente sobre el jar actual.
+
+### 2026-09-19 — Instalador: cambio seguro de temas
+
+**Objetivo:** Permitir cambiar de tema sin acumular clases anteriores.
+
+**Problema:** El instalador original inyectaba clases sobre el jar actual.
+Si el usuario ya tenia un tema instalado, las clases del anterior quedaban.
+
+**Solucion:** Agregar funcion `Restore-JDJar` que restaura desde el backup
+más limpio antes de inyectar. Flujo actual:
+
+1. Backup del jar actual
+2. Restore desde backup más limpio (prepatch > theme viejo > cualquier bak)
+3. Inyectar clases del nuevo tema
+4. Aplicar parche si se pide
+5. Actualizar settings
+
+**Leccion:** Un tema = un jar limpio. Nunca apilar temas.
+
+### 2026-09-19 — Parche ExtProgressColumn con ZipFile
+
+**Objetivo:** Aplicar parche de progress bars de forma confiable en Windows.
+
+**Problema:** `jar uf` falla en PowerShell con errores inesperados.
+
+**Solucion:** Usar `System.IO.Compression.ZipFile` de .NET para modificar
+el bytecode directamente. Más confiable que `jar.exe` del JDK.
+
+**Implementacion:** Ver funcion `Apply-ProgressPatch` en `Install-Theme.ps1`.
+
+### 2026-09-19 — Screenshots y repo publico
+
+**Resultado:**
+- 7 screenshots capturados (Airlock, Pastel98, PixelFizz, SunsetTape, VaporGrid, Zune)
+- README actualizado con previews en tabla
+- Repo publicado como public
+- Bitácora actualizada con intel faltante
